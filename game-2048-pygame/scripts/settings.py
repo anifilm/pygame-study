@@ -1,0 +1,72 @@
+import pygame
+
+# Board
+GRID_SIZE = 4
+CELL_SIZE = 100
+CELL_GAP = 12
+BOARD_PADDING = 12
+
+BOARD_SIZE = GRID_SIZE * CELL_SIZE + (GRID_SIZE + 1) * CELL_GAP
+
+# Window
+HEADER_HEIGHT = 120
+WINDOW_PADDING = 40
+WINDOW_WIDTH = BOARD_SIZE + WINDOW_PADDING * 2
+WINDOW_HEIGHT = BOARD_SIZE + HEADER_HEIGHT + WINDOW_PADDING * 2 + 20
+
+BOARD_OFFSET_X = WINDOW_PADDING
+BOARD_OFFSET_Y = HEADER_HEIGHT + WINDOW_PADDING + 20
+
+# Colors
+BG_COLOR = '#faf8ef'
+BOARD_COLOR = '#bbada0'
+EMPTY_CELL_COLOR = '#cdc1b4'
+
+TILE_COLORS = {
+    0: '#cdc1b4',
+    2: '#eee4da',
+    4: '#ede0c8',
+    8: '#f2b179',
+    16: '#f59563',
+    32: '#f67c5f',
+    64: '#f65e3b',
+    128: '#edcf72',
+    256: '#edcc61',
+    512: '#edc850',
+    1024: '#edc53f',
+    2048: '#edc22e',
+}
+
+TILE_TEXT_COLORS = {
+    2: '#776e65',
+    4: '#776e65',
+}
+
+DEFAULT_TEXT_COLOR = '#f9f6f2'
+
+# Font sizes by digit count
+FONT_SIZES = {
+    1: 52,
+    2: 44,
+    3: 36,
+    4: 28,
+}
+
+TITLE_FONT_SIZE = 60
+SCORE_FONT_SIZE = 20
+SCORE_LABEL_FONT_SIZE = 14
+
+# New Game button
+BUTTON_WIDTH = 130
+BUTTON_HEIGHT = 40
+BUTTON_COLOR = '#8f7a66'
+BUTTON_TEXT_COLOR = '#f9f6f2'
+BUTTON_FONT_SIZE = 16
+
+# Game Over overlay
+OVERLAY_ALPHA = 150
+OVERLAY_COLOR = '#eee4da'
+OVERLAY_TEXT_COLOR = '#776e65'
+
+# Animation
+SLIDE_SPEED = 0.15

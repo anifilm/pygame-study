@@ -1,0 +1,63 @@
+import pygame
+
+WINDOW_WIDTH = 800
+WINDOW_HEIGHT = 600
+FPS = 60
+
+PADDING = 20
+HUD_HEIGHT = 40
+
+GAME_TOP = HUD_HEIGHT
+GAME_BOTTOM = WINDOW_HEIGHT - PADDING
+GAME_LEFT = PADDING
+GAME_RIGHT = WINDOW_WIDTH - PADDING
+
+PLAYER_SPEED = 5
+PLAYER_BULLET_SPEED = 7
+PLAYER_BULLET_COOLDOWN = 300
+PLAYER_LIVES = 3
+PLAYER_INVINCIBLE_TIME = 2000
+
+ALIEN_COLS = 11
+ALIEN_ROWS = 5
+ALIEN_HORIZONTAL_SPACING = 48
+ALIEN_VERTICAL_SPACING = 40
+ALIEN_START_X = 80
+ALIEN_START_Y = 100
+ALIEN_MOVE_SPEED = 2
+ALIEN_DROP_DISTANCE = 20
+ALIEN_FIRE_RATE = 0.002
+ALIEN_BULLET_SPEED = 4
+
+ALIEN_SCORES = {
+    'top': 30,
+    'mid': 20,
+    'bottom': 10
+}
+
+BARRIER_COUNT = 4
+BARRIER_BLOCK_SIZE = 6
+BARRIER_HEALTH = 3
+
+LEVEL_SPEED_INCREASE = 0.5
+LEVEL_FIRE_INCREASE = 0.001
+
+COLORS = {
+    'bg': '#1C1C1C',
+    'hud_bg': '#000000',
+    'white': '#FFFFFF',
+    'green': '#00FF00',
+    'cyan': '#00FFFF',
+    'red': '#FF0000',
+    'yellow': '#FFFF00',
+    'magenta': '#FF00FF',
+    'player': '#00FFFF',
+    'alien_top': '#FF00FF',
+    'alien_mid': '#00FFFF',
+    'alien_bottom': '#00FF00',
+    'barrier': '#00FF00',
+    'bullet_player': '#FFFFFF',
+    'bullet_alien': '#FF6600',
+}
+
+SPRITE_SIZE = 32
