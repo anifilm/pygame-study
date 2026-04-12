@@ -2,8 +2,10 @@ import pygame
 import math
 from settings import *
 
-MENU_WIDTH  = 320
-MENU_HEIGHT = 370
+# 초급 게임 창 크기와 동일하게 맞춤
+_cfg        = DIFFICULTIES['beginner']
+MENU_WIDTH  = _cfg['cols'] * CELL_SIZE + BOARD_PADDING * 2
+MENU_HEIGHT = HEADER_HEIGHT + _cfg['rows'] * CELL_SIZE + BOARD_PADDING * 2
 
 DIFFICULTY_ITEMS = [
     {'key': 'beginner',     'label': 'Beginner',     'detail': '9 x 9   |   10 mines'},
@@ -45,8 +47,12 @@ class Menu:
         self.toggle_classic = pygame.Rect(cx - TOGGLE_W - 4, 82, TOGGLE_W, TOGGLE_H)
         self.toggle_dark    = pygame.Rect(cx + 4,             82, TOGGLE_W, TOGGLE_H)
 
-        # 난이도 버튼
-        start_y = 130
+        # 난이도 버튼 — 구분선(y=118) 아래 공간에서 수직 중앙 정렬
+        SEPARATOR_Y = 120
+        HINT_AREA   = 30
+        total_btn_h = len(DIFFICULTY_ITEMS) * BTN_HEIGHT + (len(DIFFICULTY_ITEMS) - 1) * BTN_GAP
+        available   = MENU_HEIGHT - SEPARATOR_Y - HINT_AREA
+        start_y     = SEPARATOR_Y + (available - total_btn_h) // 2
         self.diff_rects = {}
         for i, item in enumerate(DIFFICULTY_ITEMS):
             x = (MENU_WIDTH - BTN_WIDTH) // 2

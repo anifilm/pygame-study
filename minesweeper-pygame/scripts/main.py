@@ -65,10 +65,27 @@ class Main:
                     if result:
                         if result['action'] == 'theme':
                             self._set_theme(result['theme'])
-                            # 메뉴를 새 테마로 즉시 교체
                             self.menu = Menu(self.display_surface, self.theme, self.theme_name)
                         elif result['action'] == 'start':
                             self._start_game(result['difficulty'])
+                            last_click_time = 0
+                            last_click_cell = None
+
+                    # 메뉴에서 키보드 단축키
+                    if event.type == pygame.KEYDOWN:
+                        key = event.key
+                        if key == pygame.K_r:
+                            difficulty = self.difficulty or DEFAULT_DIFFICULTY
+                        elif key == pygame.K_1:
+                            difficulty = 'beginner'
+                        elif key == pygame.K_2:
+                            difficulty = 'intermediate'
+                        elif key == pygame.K_3:
+                            difficulty = 'expert'
+                        else:
+                            difficulty = None
+                        if difficulty:
+                            self._start_game(difficulty)
                             last_click_time = 0
                             last_click_cell = None
 
@@ -125,6 +142,8 @@ class Main:
                             self._back_to_menu()
                         elif event.key == pygame.K_r:
                             self._reset_game()
+                            last_click_time = 0
+                            last_click_cell = None
                         elif event.key == pygame.K_1:
                             self._reset_game('beginner')
                         elif event.key == pygame.K_2:

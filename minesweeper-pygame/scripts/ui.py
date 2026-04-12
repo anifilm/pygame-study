@@ -278,12 +278,28 @@ class UI:
 
         accent = (74, 222, 128) if is_win else (248, 113, 113)
 
+        # 팝업 패널 — 70% 불투명 (alpha=178)
+        ALPHA = 178
+        panel = pygame.Surface((pop_w, pop_h), pygame.SRCALPHA)
         if self.T['name'] == 'dark':
-            pygame.draw.rect(self.surface, (22, 22, 40), pop_rect, border_radius=14)
-            pygame.draw.rect(self.surface, accent, pop_rect, width=2, border_radius=14)
+            pygame.draw.rect(panel, (22, 22, 40, ALPHA),
+                             panel.get_rect(), border_radius=14)
+            pygame.draw.rect(panel, (*accent, ALPHA),
+                             panel.get_rect(), width=2, border_radius=14)
         else:
-            pygame.draw.rect(self.surface, self.T['COLOR_CELL_HIDDEN'], pop_rect)
-            self._bevel_raised(pop_rect, 3)
+            pygame.draw.rect(panel, (*self.T['COLOR_CELL_HIDDEN'], ALPHA),
+                             panel.get_rect())
+            x, y, w, h = 0, 0, pop_w, pop_h
+            for i in range(3):
+                pygame.draw.line(panel, self.T['COLOR_CELL_LIGHT'],
+                                 (x+i, y+i), (x+w-i-1, y+i))
+                pygame.draw.line(panel, self.T['COLOR_CELL_LIGHT'],
+                                 (x+i, y+i), (x+i, y+h-i-1))
+                pygame.draw.line(panel, self.T['COLOR_CELL_SHADOW'],
+                                 (x+w-i-1, y+i+1), (x+w-i-1, y+h-i-1))
+                pygame.draw.line(panel, self.T['COLOR_CELL_SHADOW'],
+                                 (x+i+1, y+h-i-1), (x+w-i-1, y+h-i-1))
+        self.surface.blit(panel, (px, py))
 
         # 제목
         title = 'YOU WIN!' if is_win else 'GAME OVER'
