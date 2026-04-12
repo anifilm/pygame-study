@@ -22,11 +22,12 @@ class Bullet(pygame.sprite.Sprite):
         return surf
 
     def update(self):
-        self.rect.y -= self.speed
         if self.is_player:
+            self.rect.y -= self.speed
             if self.rect.bottom < GAME_TOP:
                 self.kill()
         else:
+            self.rect.y += self.speed
             if self.rect.top > GAME_BOTTOM:
                 self.kill()
 

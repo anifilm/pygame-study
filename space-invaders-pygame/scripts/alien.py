@@ -94,16 +94,12 @@ class Alien(pygame.sprite.Sprite):
             color = pygame.Color(COLORS['alien_bottom'])
             pygame.draw.rect(surf, color, (4, 0, 24, 4))
             pygame.draw.rect(surf, color, (0, 4, 32, 4))
-            pygame.draw.rect(surf, color, (8, 4, 4, 4))
-            pygame.draw.rect(surf, color, (20, 4, 4, 4))
             pygame.draw.rect(surf, color, (0, 8, 32, 8))
-            pygame.draw.rect(surf, color, (4, 8, 4, 4))
-            pygame.draw.rect(surf, color, (24, 8, 4, 4))
             pygame.draw.rect(surf, color, (8, 16, 16, 4))
-            pygame.draw.rect(surf, color, (4, 20, 8, 4))
-            pygame.draw.rect(surf, color, (20, 20, 8, 4))
-            pygame.draw.rect(surf, color, (0, 24, 4, 4))
-            pygame.draw.rect(surf, color, (28, 24, 4, 4))
+            pygame.draw.rect(surf, color, (0, 20, 8, 4))
+            pygame.draw.rect(surf, color, (24, 20, 8, 4))
+            pygame.draw.rect(surf, color, (4, 24, 8, 4))
+            pygame.draw.rect(surf, color, (20, 24, 8, 4))
         return surf
 
     def toggle_frame(self):
@@ -121,7 +117,7 @@ class AlienGroup:
         self.direction = 1
         self.speed = ALIEN_MOVE_SPEED
         self.move_timer = 0
-        self.move_interval = 600
+        self.move_interval = 35
         self.should_drop = False
         self.frame_toggle = False
         self.alien_fire_rate = ALIEN_FIRE_RATE
@@ -159,7 +155,7 @@ class AlienGroup:
 
         alive_count = len(self.aliens)
         if alive_count > 0:
-            self.move_interval = max(50, 600 - (55 - alive_count) * 10)
+            self.move_interval = max(5, 35 - (55 - alive_count) * 0.5)
 
     def _move(self):
         edge_hit = False
